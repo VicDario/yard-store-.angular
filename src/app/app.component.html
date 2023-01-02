@@ -1,4 +1,8 @@
 <app-nav></app-nav>
+<button (click)="createUser()">Create</button>
+<button (click)="downloadFile()">Download!</button>
+<input type="file" (change)="onUpload($event)"/>
+<img *ngIf="imageFromServer" [src]="imageFromServer" alt="Image from server">
 <app-products></app-products>
 <!-- <p><input type="text" [(ngModel)]="imgParent" /></p>
 <button (click)="toggleImg()">Toggle Img</button>
