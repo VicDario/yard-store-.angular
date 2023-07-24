@@ -122,7 +122,6 @@
       }
     }
   },
-  "defaultProject": "my-store-api",
   "schematics": {
     "@angular-eslint/schematics:application": {
       "setParserOptionsProject": true
