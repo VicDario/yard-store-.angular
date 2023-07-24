@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { zip } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Product, CreateProductDTO, UpdateProductDTO } from '../../models/product.model';
@@ -13,9 +13,11 @@ import { ProductsService } from '../../services/products.service';
 })
 export class ProductsComponent implements OnInit {
 
+  @Input() products: Product[] = [];
+  @Output() loadMore = new EventEmitter();
+
   myShoppingCart: Product[] = [];
   total = 0;
-  products: Product[] = [];
   showProductDetail = false;
   productChosen?: Product;
   limit = 10;
@@ -117,4 +119,7 @@ export class ProductsComponent implements OnInit {
     )
   }
 
+  onLoadMore() {
+    this.loadMore.emit();
+  }
 }
