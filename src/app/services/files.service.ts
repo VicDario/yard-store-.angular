@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { saveAs } from 'file-saver';
+import { saveAs } from 'file-saver-es';
 import { map, tap } from 'rxjs/operators';
 
 interface File {
