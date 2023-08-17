@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-import { Product } from './models/product.model';
-import { User } from './models/user.model';
-
-import { AuthService } from './services/auth.service';
 import { FilesService } from './services/files.service';
 import { UserService } from './services/user.service';
 
