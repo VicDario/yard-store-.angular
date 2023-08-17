@@ -14,6 +14,10 @@ import { ProductsService } from '../../services/products.service';
 export class ProductsComponent implements OnInit {
 
   @Input() products: Product[] = [];
+  @Input()
+  set productId(id: string | null) {
+    if (id) this.onShowDetail(id);
+  };
   @Output() loadMore = new EventEmitter();
 
   myShoppingCart: Product[] = [];
@@ -46,13 +50,12 @@ export class ProductsComponent implements OnInit {
 
   onShowDetail(id: string) {
     this.statusDetail = 'loading';
-    this.toggleProductDetail();
     this.productsService.get(id)
     .subscribe({
       next: (data) => {
         this.statusDetail = 'success';
         this.productChosen = data;
-        this.toggleProductDetail();
+        if (!this.showProductDetail) this.toggleProductDetail();
       },
       error: (error) => {
         this.statusDetail = 'error';

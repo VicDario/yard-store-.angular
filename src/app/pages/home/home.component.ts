@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -11,12 +12,17 @@ export class HomeComponent implements OnInit {
   products: Product[] = [];
   limit = 10;
   offset = 0;
-  private productsService = inject(ProductsService)
+  productId: string | null = null;
+  private productsService = inject(ProductsService);
+  private activatedRoute = inject(ActivatedRoute);
 
   ngOnInit(): void {
     this.productsService.getAll(10, 0).subscribe((data) => {
       this.products = data;
       this.offset += this.limit;
+    });
+    this.activatedRoute.queryParamMap.subscribe((params) => {
+      this.productId = params.get('product');
     });
   }
 
