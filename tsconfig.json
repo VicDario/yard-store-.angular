@@ -20,12 +20,17 @@
       "es2018",
       "dom"
     ],
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "paths": {
+      "@services/*": ["./src/app/services/*"],
+      "@models/*": ["./src/app/models/*"],
+      "@interceptors/*": ["./src/app/interceptors/*"],
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
 }
