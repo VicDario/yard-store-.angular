@@ -25,6 +25,7 @@
       "@services/*": ["./src/app/services/*"],
       "@models/*": ["./src/app/models/*"],
       "@interceptors/*": ["./src/app/interceptors/*"],
+      "@shared/*": ["./src/app/shared/*"],
     }
   },
   "angularCompilerOptions": {
