@@ -15,10 +15,16 @@ const routes: Routes = [
       {
         path: 'category',
         loadChildren: () => import('./pages/category/category.module').then(m => m.CategoryModule),
+        data: {
+          preload: true,
+        }
       },
       {
         path: 'product',
         loadChildren: () => import('./pages/product-detail/product-detail.module').then(m => m.ProductDetailModule),
+        data: {
+          preload: true,
+        }
       },
       {
         path: 'mycart',
