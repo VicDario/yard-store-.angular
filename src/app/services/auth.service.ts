@@ -44,4 +44,15 @@ export class AuthService {
       headers
     })
   }
+
+  logout() {
+    this.tokenService.removeToken();
+    this.user.next({
+      id: '',
+      email: '',
+      password: '',
+      name: '',
+      role: null
+    });
+  }
 }
