@@ -20,6 +20,7 @@ export class AuthService {
     email: '',
     password: '',
     name: '',
+    role: null
   });
 
   user$ = this.user.asObservable();
