@@ -3,6 +3,8 @@ import { Title } from '@angular/platform-browser';
 
 import { FilesService } from './services/files.service';
 import { UserService } from './services/user.service';
+import { AuthService } from '@services/auth.service';
+import { TokenService } from '@services/token.service';
 
 import { environment } from 'src/environments/environment';
 @Component({
@@ -17,10 +19,16 @@ export class AppComponent implements OnInit {
     private title: Title,
     private userService: UserService,
     private fileService: FilesService,
+    private authService: AuthService,
+    private tokenService: TokenService,
   ) { }
 
   ngOnInit(): void {
-      this.title.setTitle('my-store');
+    this.title.setTitle('my-store');
+    const token = this.tokenService.getToken();
+    if (token) {
+      this.authService.getProfile().subscribe();
+    }
   }
   imgParent = '';
   showImg = true;
