@@ -26,12 +26,12 @@ export class AuthService {
     return this.http.post<Auth>(`${this.apiUrl}/login`, {email, password})
     .pipe(
       tap((response) => this.tokenService.saveToken(response.access_token)),
-      switchMap(() => this.profile()),
+      switchMap(() => this.getProfile()),
       tap((user) => this.user.next(user))
     )
   }
 
-  profile() {
+  getProfile() {
     const headers = new HttpHeaders(/* { 'Authorization': `Bearer ${token}` } */);
     return this.http.get<User>(`${this.apiUrl}/profile`, {
       headers
