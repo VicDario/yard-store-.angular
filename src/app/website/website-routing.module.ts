@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
 import { authGuard } from '../guards/auth.guard';
+import { exitGuard } from '../guards/exit.guard';
 
 const routes: Routes = [
   {
@@ -37,6 +38,7 @@ const routes: Routes = [
       {
         path: 'register',
         loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule),
+        canDeactivate: [exitGuard],
       },
       {
         path: 'recovery',
