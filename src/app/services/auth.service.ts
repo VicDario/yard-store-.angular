@@ -15,14 +15,7 @@ import { TokenService } from './token.service';
 })
 export class AuthService {
   private apiUrl = `${environment.API_URL}/api/auth`
-  private user = new BehaviorSubject<User>({
-    id: '',
-    email: '',
-    password: '',
-    name: '',
-    role: null
-  });
-
+  private user = new BehaviorSubject<User| null>(null);
   user$ = this.user.asObservable();
   constructor(
     private http: HttpClient,
@@ -47,12 +40,6 @@ export class AuthService {
 
   logout() {
     this.tokenService.removeToken();
-    this.user.next({
-      id: '',
-      email: '',
-      password: '',
-      name: '',
-      role: null
-    });
+    this.user.next(null);
   }
 }
